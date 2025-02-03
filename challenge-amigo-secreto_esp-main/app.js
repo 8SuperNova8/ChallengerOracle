@@ -5,12 +5,12 @@ let cont = 0;
 function addFriend(){
     let inputText = document.getElementById("amigo").value;
     //retira el resultado si ya se ha ejecutado Sortear amigo
-    if (cont >0) clearResult()
+    if (cont >0) showOnScreen("resultado", "")
     if (inputText != ""){
         friends.push(inputText)
         clearBox();
-        showList();
-
+        showOnScreen("listaAmigos", friends.join("\n"))
+        
     }else{
         alert("Ingresa un valor valido")
     }
@@ -22,7 +22,8 @@ function ramdonFriend(){
     cont ++
     let resultRamdon = Math.floor(Math.random()* friends.length)
     let secretFriend = friends[resultRamdon]
-    addResult(secretFriend)
+    //muestra en la etiqueta Ul el resultado del random
+    showOnScreen("resultado", `El Amigo secreto es:\n ${secretFriend}`)
     start()
     console.log (friends)
     }else{
@@ -36,27 +37,16 @@ function clearBox(){
     return document.querySelector(".input-name").value ="";
 }
 
-//mostrar lista
-function showList(){
-    let contentList =  document.getElementById("listaAmigos").innerText = friends.join("\n")
-}
-
-//agrega resultado en pantalla
-function addResult(secret){
-    let result = document.getElementById("resultado").innerHTML= `El Amigo secreto es:\n ${secret}`;
-}
-
-//limpiar el reatultado del sorteo
-function clearResult (){
-    return document.getElementById("resultado").innerHTML= "";
+//showOnScreen muestra en pantalla
+function showOnScreen(etiqueta, contenido){
+    return document.getElementById(etiqueta).innerText= contenido;
 }
 
 function start (){
     //se inicia la lista
     friends = []
     //se limpiar la etiqueta UL
-    document.getElementById("listaAmigos").innerText = "";
-    
+    showOnScreen("listaAmigos", "")
 }
 
 
