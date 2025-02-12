@@ -18,7 +18,7 @@ function addFriend() {
             showOnScreen("listaAmigos", inputText)
         } else { alert("este amigo ya esta en la lista") }
     } else {
-        alert("Ingresa un valor valido")
+        alert("Por favor, inserte un nombre.")
     }
 }
 
@@ -49,6 +49,7 @@ function showOnScreen(id, contenido) {
     const li = document.createElement("li");
     //asigno el texto a la etiqueta
     li.appendChild(document.createTextNode(contenido));
+    //li.setAttribute("id", "li-1"); este me permite asignarle un nombre al atributo "id"
     ul.appendChild(li);
 }
 
